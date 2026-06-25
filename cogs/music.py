@@ -7,7 +7,12 @@ from asyncio import run_coroutine_threadsafe
 
 
 class Options:
-    YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
+    YDL_OPTIONS = {
+        'format': 'bestaudio',
+        'noplaylist': 'True',
+        'extractor_args': {'youtube': {'player_client': ['web']}},
+        'js_runtimes': 'node',          # tells yt-dlp where to look
+    }
     FFMPEG_OPTIONS = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
         'options': '-vn'
